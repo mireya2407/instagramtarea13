@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    
+      <meta charset="UTF-8">
+      <title>Instagram</title>
+      <style>
+        body {
+          margin: 0;
+          height: 100vh;
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-family: Arial, sans-serif;
+        }
+    
+        h1 {
+          font-size: 3rem;
+        }
+      </style>
+    
+    
+
+
+    </body>
+
+
+    </html>
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Guardados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        button {
+            background: #007BFF;
+            color: #000000;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+
+    
+    <div class="container">
+        <h2>Datos Guardados</h2>
+        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+        <button onclick="editar('nombre')">Editar</button>
+        <p><strong>Edad:</strong> <span id="edad"></span></p>
+        <button onclick="editar('edad')">Editar</button>
+        <button onclick="window.location.href='formulario.html'">Volver al inicio</button>
+    </div>
+
+    <script>
+        function cargarDatos() {
+            let datos = localStorage.getItem("usuario");
+            if (datos) {
+                let usuario = JSON.parse(datos);
+                document.getElementById("nombre").textContent = usuario.nombre;
+                document.getElementById("edad").textContent = usuario.edad;
+            }
+        }
+
+        function editar(campo) {
+            let nuevoValor = prompt("Ingrese el nuevo valor:");
+            if (nuevoValor !== null && nuevoValor.trim() !== "") {
+                let datos = JSON.parse(localStorage.getItem("usuario"));
+                datos[campo] = nuevoValor;
+                localStorage.setItem("usuario", JSON.stringify(datos));
+                document.getElementById(campo).textContent = nuevoValor;
+            }
+        }
+
+        cargarDatos();
+    </script>
+</body>
+</html>
+
+
